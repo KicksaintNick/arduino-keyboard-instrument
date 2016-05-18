@@ -21,7 +21,10 @@ void loop() {
   // Print this value to the Serial monitor
   Serial.println(keyVal);
 
-  // Play a tone 
+  // Play a tone by reading the analog value from the key presses.
+  // The different key values are determined by the different resistors used
+  // This is a pretty effective way to have large amounts of push buttons on 
+  // a board
   if (keyVal == 1023) {
     tone(8, notes[0]);
   } else if (keyVal >= 940 && keyVal <= 960) {
@@ -33,6 +36,6 @@ void loop() {
   } else if (keyVal <= 50 && keyVal >= 2) {
     tone(8, notes[4]);
   } else {
-    noTone(8);
+    noTone(8); // If no button is pushed then the key tones are disabled
   }
 }
